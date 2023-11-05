@@ -1,4 +1,4 @@
-**# Cristian Cordero's Blog
+# Cristian Cordero's Blog
 
 Welcome to my personal blog's source code repository. This website is built using the power of [Wowchemy](https://wowchemy.com), an open-source website builder that's used by over 250,000 professional creators.
 
