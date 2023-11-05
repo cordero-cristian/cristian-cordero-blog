@@ -49,10 +49,14 @@ sections:
           location: Remote Charlotte, NC
           date_start: '2022-08-01'
           date_end: ''
-          description: '* Managed $500k worth of Communications Equipment. \n
-                        * Trained Special Forces Communication Sergeants. \n
-                        * Operated radios in various frequency ranges. \n 
-                        * Administered satellite communication systems. \n
+          description: '* Managed $500k worth of Communications Equipment.
+          
+                        * Trained Special Forces Communication Sergeants.
+                        
+                        * Operated radios in various frequency ranges.
+                        
+                        * Administered satellite communication systems.
+                        
                         * Led radio operations for multiple country training events.'
         - title: Network Services SME
           company: Axonius
