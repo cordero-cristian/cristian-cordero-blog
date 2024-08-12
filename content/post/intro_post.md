@@ -4,8 +4,6 @@ date: 2024-03-03
 ---
 
 
-# root@server whoami 
-
 Hello to all readers, and welcome to my blog!
 
 My name is **Cristian Cordero**, and I'm thrilled to kick off this space where I'll be sharing my experiences, insights, and journey in the fascinating world of network automation technology sales.
