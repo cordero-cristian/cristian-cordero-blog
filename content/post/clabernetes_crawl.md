@@ -3,8 +3,6 @@ title: "🐣 Crawl: Deploying Kubernetes on DigitalOcean"
 date: 2025-04-15
 ---
 
-# 🐣 Crawl: Deploying Kubernetes on DigitalOcean
-
 As a Solutions Architect working with complex network automation platforms, I’ve always loved pushing the edge of what’s possible. But this series isn’t about enterprise polish or vendor demos — it’s about **getting my hands dirty**, testing real-world concepts, and sharing every step (and misstep) along the way.
 
 In this first post, we’ll start at the “Crawl” stage: launching a managed Kubernetes cluster on [DigitalOcean](https://digitalocean.com) as the foundation for our lab. No custom controllers, no CNI tricks — just raw infrastructure and curiosity.
