@@ -34,6 +34,9 @@ Let’s build this from the ground up. 🐣
   - Enable auto-upgrades (optional but recommended)
 
 ### 2. Install and Configure `doctl`
+{{< note >}}
+Brew is mac native, please refer to DigitalOceans (doctl)[https://docs.digitalocean.com/reference/doctl/how-to/install/] installation for other platforms.
+{{< /note >}}
 
 ```bash
 brew install doctl
@@ -43,6 +46,9 @@ brew install doctl
 doctl auth init
 ```
 ### 3. Get Your Kubeconfig
+{{< note >}}
+For `kubectl` installation, please refer to the (official kubernetes docs)[https://kubernetes.io/docs/tasks/tools/#kubectl]
+{{< /note >}}
 
 To authenticate **`kubectl`** with your new cluster, run:
 
