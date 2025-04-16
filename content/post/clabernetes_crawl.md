@@ -35,7 +35,7 @@ Let’s build this from the ground up. 🐣
 
 ### 2. Install and Configure `doctl`
 {{< note >}}
-Brew is mac native, please refer to DigitalOceans [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) installation for other platforms.
+Brew is mac native, please refer to DigitalOcean's [doctl](https://docs.digitalocean.com/reference/doctl/how-to/install/) installation for other platforms.
 {{< /note >}}
 
 ```bash
@@ -69,6 +69,10 @@ Here is an example from my lab.
 NAME                   STATUS   ROLES    AGE     VERSION
 pool-42jzkx9cx-6s71k   Ready    <none>   3m34s   v1.32.2
 ```
+
+{{< note >}}
+💡 Pro tip: Use `kubectl config get-contexts` to see your active cluster.
+{{< /note >}}
 
 ### 🧠 What I Learned in the Crawl Phase
 * Kubeconfig access is step zero for everything that follows.
