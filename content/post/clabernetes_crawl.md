@@ -1,5 +1,5 @@
 ---
-title: 🐣 Crawl: Deploying Kubernetes on DigitalOcean
+title: "🐣 Crawl: Deploying Kubernetes on DigitalOcean"
 date: 2025-04-15
 ---
 
