@@ -1,3 +1,7 @@
+title: 🐣 Crawl: Deploying Kubernetes on DigitalOcean
+date: 2025-04-15
+---
+
 # 🐣 Crawl: Deploying Kubernetes on DigitalOcean
 
 As a Solutions Architect working with complex network automation platforms, I’ve always loved pushing the edge of what’s possible. But this series isn’t about enterprise polish or vendor demos — it’s about **getting my hands dirty**, testing real-world concepts, and sharing every step (and misstep) along the way.
