@@ -12,8 +12,10 @@ sections:
       username: admin
       # Override your bio text from `authors/admin/_index.md`?
       text: |-
-        👋 Hi, there! I'm **Cris**! Network Engineer and Python Enthusiast.
-        {style="font-size: 1.2rem; background: #FFB76B; background: linear-gradient(to right, #FFB76B 0%, #FFA73D 30%, #FF7C00 60%, #FF7F04 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"}
+  👋 Hi, there! I'm <strong>Cris</strong>! Network Engineer and Python Enthusiast.<br>
+  <span style="font-size: 1.2rem; background: linear-gradient(to right, #FFB76B 0%, #FFA73D 30%, #FF7C00 60%, #FF7F04 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block;">
+    I build things with Python and give insights into networks for fun.
+  </span>
   - block: features
     content:
       title: Skills
