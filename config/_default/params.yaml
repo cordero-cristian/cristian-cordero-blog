@@ -6,10 +6,13 @@
 # Appearance
 
 appearance:
-  theme_day: minimal
-  theme_night: minimal
-  font: minimal
   font_size: L
+  
+theme_day:
+  name: minimal
+
+theme_night:
+  name: minimal
 
 # SEO
 
@@ -67,19 +70,3 @@ features:
   avatar:
     gravatar: false
     shape: circle
-
-
-# Extensions
-
-extensions:
-  cms:
-    branch: main
-    local_backend: false
-  academicons:
-    enable: true
-
-# Security
-
-security:
-  # Allow frame for embedding speaker notes in slides
-  allow_frame: true

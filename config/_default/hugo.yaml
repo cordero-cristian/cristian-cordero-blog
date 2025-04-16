@@ -1,0 +1,21 @@
+title: Cristian Cordero
+baseURL: 'https://cristian-cordero.dev'
+pagination:
+  pagerSize: 10
+
+permalinks:
+  authors: '/author/:slug/'
+  tags: '/tag/:slug/'
+  categories: '/category/:slug/'
+  event: '/talk/:slug/'
+  publication_types: '/publication-type/:slug/'
+
+taxonomies:
+  tag: tags
+  category: categories
+  author: authors
+  publication_type: publication_types
+
+security:
+  funcs:
+    getenv: ['^HUGO_', '^CI$', '^WC_POST_CSS$']
