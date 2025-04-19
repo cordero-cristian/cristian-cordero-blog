@@ -1,6 +1,6 @@
 ---
 title: "🥾 Walk: Deploying Containerlab in Kubernetes with Arista cEOS"
-date: 2025-04-XX
+date: 2025-04-19
 description: Walking forward by transforming Containerlab topologies into live cEOS nodes inside Kubernetes using Clabverter + Clabernetes.
 ---
 
