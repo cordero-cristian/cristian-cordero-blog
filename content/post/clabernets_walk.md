@@ -4,7 +4,7 @@ date: 2025-04-19
 description: Walking forward by transforming Containerlab topologies into live cEOS nodes inside Kubernetes using Clabverter + Clabernetes.
 ---
 
-> 🐣 If you missed the Crawl phase, [start here](../crawl-digitalocean-kubernetes).
+> 🐣 If you missed the Crawl phase, [start here](./clabernetes_crawl.md).
 
 ---
 
