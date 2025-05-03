@@ -5,7 +5,7 @@ date: 2025-05-02
 description: Wrapping up our Crawl-Walk-Run series by enabling gNMI on Arista cEOS and streaming real-time telemetry through Kubernetes using `gnmic`.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-> 👛 Missed the earlier phases? [Start from the beginning](../crawl-digitalocean-kubernetes).
+> 👛 Missed the earlier phases? [Start from the beginning](https://cristian-cordero.dev/post/clabernetes_crawl/).
 
 ---
 
