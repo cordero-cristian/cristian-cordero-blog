@@ -29,7 +29,7 @@ sections:
           description: Wireless, On-Prem & Cloud Datacenter, SDN
           icon_pack: fas
         - name: Leader
-          description: Program Management, Sales, Customer Success
+          description: Program Management, Mentorship, Customer Satisfaction
           icon: diagram-project
           icon_pack: fas
   - block: experience
@@ -39,21 +39,33 @@ sections:
       #   Refer to https://wowchemy.com/docs/customization/#date-format
       date_format: Jan 2006
       items:
-        - title: Solutions Architect 
+        - title: Principle Engineer / Executive Director
+          company: Wells Fargo
+          company_url: ''
+          company_logo:
+          location: Charlotte, NC
+          date_start: '2025-08-27'
+          date_end: ''
+          description: "
+          * Defining automation and artificial intelligence roadmap
+          
+          
+"
+        - title: Solutions Architect Team Lead
           company: IP Fabric
           company_url: ''
           company_logo: 
           location: Remote Charlotte, NC
           date_start: '2022-08-01'
-          date_end: ''
+          date_end: '2025-08-17'
           description: "
-          * Conducting over 75% of product demos in North America.
+          * Acquired over one million dollars in net new revenue.
 
           * Collaborating with Account Executives for customer satisfaction and success across the sales cycle.
 
           * Troubleshot a wide range of network infrastructure issues. (BGP, OSPF, STP, Config Driff)
           
-          * Ensured customer requirements were understood by multiple teams.
+          * Maintained 5 unique integrations with the IT ecosystem.
 "
         - title: Network Services SME
           company: Axonius
