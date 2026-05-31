@@ -504,6 +504,7 @@ Phase 7 site polish completed:
 - Added compact clickable tags to the blog index cards.
 - Included tag pages in the sitemap.
 - Normalized tag pill spacing so wrapped tags have consistent height.
+- Committed as `cb0b92c Polish Astro blog navigation and tags`.
 
 Scratch/reference cleanup proposal:
 
@@ -517,6 +518,70 @@ Suggested commit:
 ```text
 Switch production site to Astro
 ```
+
+### Phase 8 - Visual Theme Refresh
+
+Status: complete locally; needs Cloudflare preview review after push/deploy.
+
+Goal:
+
+- Move the Astro site from a clean minimal migration style to a more distinctive old-school personal website aesthetic with modern accessibility, responsive behavior, and content ergonomics.
+- Add a first-class dark mode.
+
+Theme direction:
+
+- Old-school website vibe without sacrificing readability: compact layout rhythm, visible borders, textured but restrained surfaces, terminal/web-1.0 cues, monospace accents, and direct navigation.
+- Modern functionality: responsive layout, accessible contrast, keyboard-visible focus states, semantic HTML, fast static pages, stable tag/blog routing, RSS, sitemap, and Cloudflare-compatible output.
+- Avoid a novelty-only retro look. The site should still read as a technical blog and professional portfolio.
+
+Recommended visual system:
+
+- Typography:
+  - Use a readable sans-serif for body copy and a monospace face for headings, labels, nav, metadata, tags, and code-adjacent UI.
+  - Keep blog prose comfortable at current widths; do not shrink long-form content for aesthetics.
+- Color:
+  - Light mode: off-white document background, high-contrast ink text, muted gray borders, green/cyan link accents, and small amber highlights.
+  - Dark mode: near-black/navy background, light text, subdued green/cyan accents, softer borders, and code blocks that feel terminal-like without reducing legibility.
+- Layout:
+  - Add a bordered page shell or header/footer treatment that evokes an older handcrafted site.
+  - Keep content sections full-width/unframed where appropriate; use cards only for repeated posts, skills, and timeline items.
+  - Add small retro details such as divider rules, status-line style metadata, and simple ASCII-inspired accents where they support navigation.
+- Interaction:
+  - Add a persistent theme toggle that respects `prefers-color-scheme` on first visit and stores the user's preference.
+  - Make hover/focus states explicit for nav, buttons, cards, tags, and back links.
+  - Keep all controls functional without client-side framework dependencies.
+
+Implementation plan:
+
+1. Add theme tokens in `global.css` for light and dark modes, including background, surface, text, muted text, border, accent, links, code, and focus colors.
+2. Add a small no-framework theme toggle in `BaseLayout.astro` that runs before paint to avoid a flash of the wrong theme.
+3. Restyle the global header, nav, footer, buttons, cards, tag pills, post metadata, code blocks, and blockquotes around the new token system.
+4. Refresh the homepage visual hierarchy with a stronger old-school first impression while keeping the current content and section order.
+5. Refresh blog index, tag pages, and post pages so their lists, metadata, and tags share the same visual language.
+6. Verify light mode, dark mode, mobile width, keyboard focus, and `npm run --prefix astro-site build`.
+
+Implemented:
+
+- Added a no-framework theme bootstrap script in `BaseLayout.astro` that sets `data-theme` before page content renders.
+- Added an accessible theme toggle in the global header with persisted `localStorage` preference.
+- Preserved first-visit system preference behavior via `prefers-color-scheme`.
+- Reworked `global.css` around light and dark theme tokens for background, surfaces, text, muted text, borders, accents, links, focus, tags, and code.
+- Refreshed the site with an old-school personal website style: visible borders, square controls, compact navigation, bordered page shell treatment, monospace UI accents, status-line metadata, and restrained retro cues.
+- Restyled header, footer, buttons, cards, tag pills, back links, blog listings, post pages, blockquotes, inline code, and fenced code blocks.
+- Kept the content model, canonical routes, redirects, RSS, sitemap, blog posts, and tag pages unchanged.
+- Avoided React, Vue, Svelte, design systems, or heavy theme dependencies.
+- Verified `npm run --prefix astro-site build` passes locally.
+
+Acceptance checklist:
+
+- [x] Theme toggle exists and persists user choice.
+- [x] Initial theme respects `prefers-color-scheme` before stored preference exists.
+- [x] Light and dark modes pass practical contrast checks for body text, links, buttons, tags, and code blocks.
+- [x] Blog post pages remain easy to read on mobile and desktop.
+- [x] Tags, back links, nav links, buttons, and cards have clear hover and keyboard focus states.
+- [x] No React/Vue/Svelte or heavy design dependency is introduced for the theme.
+- [x] `npm run --prefix astro-site build` passes.
+- [ ] Review the refreshed design in a Cloudflare Pages preview after pushing the branch.
 
 ## 4. Risks
 
@@ -609,6 +674,7 @@ Cloudflare preview validation:
 - [ ] Decide whether contact form remains deferred.
 - [ ] Decide whether terms/privacy pages remain unpublished.
 - [ ] Decide whether `astro-poc/`, generated `site/`, and other scratch files should be removed in a later cleanup.
+- [x] Complete Phase 8 visual theme refresh locally before production cutover.
 
 Before production cutover:
 
@@ -627,4 +693,4 @@ Astro remains the recommended migration target for this site.
 
 The current site is a personal technical blog with a custom homepage, profile sections, posts, code snippets, static assets, and a need for stable URLs. Astro fits that shape better than a documentation-first tool because it supports Markdown content collections, simple components, static output, and custom layouts without requiring a client-side framework.
 
-The main condition is discipline: do not recreate Wowchemy wholesale, do not introduce React for static content, and do not delete Hugo/Wowchemy files until the Astro preview has been validated. The next phase should focus on Cloudflare preview validation and cutover readiness, not new feature work.
+The main condition is discipline: do not recreate Wowchemy wholesale, do not introduce React for static content, and do not delete Hugo/Wowchemy files until production cutover or cleanup is explicitly approved. The next product decision is whether to cut over the validated Astro site as-is or complete the proposed old-school visual theme refresh before production launch.
