@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTagSlug } from '../../lib/tags';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Blog"
+  description="Technical notes on network automation, Kubernetes, telemetry, and cloud-native infrastructure."
+  canonicalPath="/blog/"
+>
+  <section class="page-heading">
+    <p class="eyebrow">Blog</p>
+    <h1>Technical notes and labs</h1>
+    <p class="lede">Network automation, Kubernetes, telemetry, and cloud-native infrastructure experiments.</p>
+  </section>
+
+  <section class="post-list" aria-label="Blog posts">
+    {posts.map((post) => (
+      <article>
+        <p class="post-meta">
+          {new Intl.DateTimeFormat('en', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+            timeZone: 'UTC',
+          }).format(post.data.pubDate)}
+        </p>
+        <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
+        {post.data.description && <p>{post.data.description}</p>}
+        {post.data.tags.length > 0 && (
+          <ul class="tag-list compact" aria-label={`${post.data.title} tags`}>
+            {post.data.tags.map((tag) => (
+              <li>
+                <a href={`/tags/${getTagSlug(tag)}/`}>{tag}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </article>
+    ))}
+  </section>
+</BaseLayout>

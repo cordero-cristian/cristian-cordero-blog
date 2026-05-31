@@ -1,10 +1,14 @@
 # IDEs
 .idea/
 
-# Hugo
-resources/
-public/
-jsconfig.json
+# Dependencies
 node_modules/
-go.sum
-.hugo_build.lock
+astro-site/node_modules/
+
+# Astro build artifacts
+astro-site/.astro/
+astro-site/dist/
+
+# Local environments and caches
+.venv/
+.cache/

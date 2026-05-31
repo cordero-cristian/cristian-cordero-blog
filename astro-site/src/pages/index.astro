@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { experience, profile, skills } from '../data/profile';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">{profile.role}</p>
+      <h1>Building useful network automation and cloud-native infrastructure labs.</h1>
+      <p class="lede">{profile.intro}</p>
+      <div class="actions">
+        <a class="button" href="/blog/">Read posts</a>
+        <a class="button secondary" href="#contact">Contact</a>
+      </div>
+    </div>
+    <img src={profile.avatar} alt="Cristian Cordero" width="184" height="184" />
+  </section>
+
+  <section aria-labelledby="skills-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Focus</p>
+      <h2 id="skills-heading">Skills</h2>
+    </div>
+    <div class="grid three">
+      {skills.map((skill) => (
+        <article class="card">
+          <h3>{skill.name}</h3>
+          <p>{skill.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Background</p>
+      <h2 id="experience-heading">Experience</h2>
+    </div>
+    <div class="timeline">
+      {experience.map((role) => (
+        <article>
+          <div class="role-heading">
+            <div>
+              <h3>{role.title}</h3>
+              <p class="company">{role.company}</p>
+            </div>
+            <p class="post-meta">{role.dates} · {role.location}</p>
+          </div>
+          <ul>
+            {role.points.map((point) => <li>{point}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="posts-heading">
+    <div class="section-heading inline">
+      <div>
+        <p class="eyebrow">Writing</p>
+        <h2 id="posts-heading">Recent Posts</h2>
+      </div>
+      <a href="/blog/">All posts</a>
+    </div>
+    <div class="post-list">
+      {posts.map((post) => (
+        <article>
+          <p class="post-meta">
+            {new Intl.DateTimeFormat('en', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+              timeZone: 'UTC',
+            }).format(post.data.pubDate)}
+          </p>
+          <h3><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h3>
+          {post.data.description && <p>{post.data.description}</p>}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Connect</p>
+      <h2 id="contact-heading">Contact</h2>
+    </div>
+    <div class="contact-links">
+      <a href={`mailto:${profile.email}`}>Email</a>
+      {profile.social.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  </section>
+</BaseLayout>

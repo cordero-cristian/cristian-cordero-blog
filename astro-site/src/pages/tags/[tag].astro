@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTagSummaries } from '../../lib/tags';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  const tags = getTagSummaries(posts);
+
+  return tags.map((tag) => ({
+    params: { tag: tag.slug },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+---
+
+<BaseLayout
+  title={`${tag.label} Posts`}
+  description={`Blog posts tagged ${tag.label}.`}
+  canonicalPath={`/tags/${tag.slug}/`}
+>
+  <section class="page-heading">
+    <a class="back-link" href="/tags/">&larr; All tags</a>
+    <p class="eyebrow">Tag</p>
+    <h1>{tag.label}</h1>
+    <p class="lede">{tag.posts.length} {tag.posts.length === 1 ? 'post' : 'posts'} tagged {tag.label}.</p>
+  </section>
+
+  <section class="post-list" aria-label={`${tag.label} posts`}>
+    {tag.posts.map((post) => (
+      <article>
+        <p class="post-meta">
+          {new Intl.DateTimeFormat('en', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+            timeZone: 'UTC',
+          }).format(post.data.pubDate)}
+        </p>
+        <h2><a href={`/blog/${post.slug}/`}>{post.data.title}</a></h2>
+        {post.data.description && <p>{post.data.description}</p>}
+      </article>
+    ))}
+  </section>
+</BaseLayout>
