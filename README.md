@@ -40,7 +40,7 @@ npm run astro:preview
 
 ## Cloudflare Pages
 
-Use these settings for the Astro deployment:
+The `astro-migration-poc` branch has deployed successfully as a Cloudflare Pages preview. Keep these settings for the Astro deployment:
 
 - Root directory: `astro-site`
 - Build command: `npm run build`
@@ -48,6 +48,8 @@ Use these settings for the Astro deployment:
 - Node.js: 20+
 
 The Astro build includes `/`, `/blog/`, canonical `/blog/:slug/` post URLs, `/rss.xml`, `/sitemap.xml`, `/404.html`, and Cloudflare `_redirects` for the legacy Hugo post URLs.
+
+For production cutover, keep `astro-site` as the Pages root unless Cloudflare exposes a concrete deployment constraint. Do not move the Astro app to the repository root as part of cutover prep.
 
 ## Legacy Hugo
 
@@ -58,4 +60,4 @@ The existing Hugo source is retained for reference during migration:
 - `config/`: Wowchemy/Hugo configuration
 - `static/` and `assets/`: legacy static assets
 
-Do not remove or archive the Hugo files until the Astro preview has been validated and a separate cleanup step is approved.
+Do not remove or archive the Hugo files until production cutover or a separate cleanup step is explicitly approved.

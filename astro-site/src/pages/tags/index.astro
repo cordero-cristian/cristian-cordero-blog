@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTagSummaries } from '../../lib/tags';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const tags = getTagSummaries(posts);
+---
+
+<BaseLayout
+  title="Tags"
+  description="Browse blog posts by topic."
+  canonicalPath="/tags/"
+>
+  <section class="page-heading">
+    <p class="eyebrow">Tags</p>
+    <h1>Browse by topic</h1>
+    <p class="lede">Find posts by network automation, Kubernetes, telemetry, and infrastructure topics.</p>
+  </section>
+
+  <section aria-label="Tags">
+    <ul class="tag-list">
+      {tags.map((tag) => (
+        <li>
+          <a href={`/tags/${tag.slug}/`}>{tag.label} <span aria-hidden="true">({tag.posts.length})</span></a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

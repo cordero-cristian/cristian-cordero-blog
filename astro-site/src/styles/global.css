@@ -154,11 +154,14 @@ li + li {
 
 .button,
 .contact-links a,
-.tag-list li {
+.tag-list a {
+  align-items: center;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--surface);
   color: var(--text);
+  display: inline-flex;
+  min-height: 42px;
   padding: 10px 14px;
   text-decoration: none;
 }
@@ -272,6 +275,49 @@ li + li {
 .tag-list {
   list-style: none;
   padding: 0;
+}
+
+.tag-list li + li {
+  margin-top: 0;
+}
+
+.tag-list a:hover,
+.tag-list a:focus {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.tag-list.compact {
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tag-list.compact a {
+  min-height: 34px;
+  padding: 6px 10px;
+}
+
+.back-link {
+  display: inline-flex;
+  margin-bottom: 24px;
+  color: var(--accent-strong);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus {
+  text-decoration: underline;
+}
+
+.post-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+  padding-top: 24px;
+}
+
+.post-footer .back-link {
+  margin-bottom: 0;
 }
 
 .site-footer {

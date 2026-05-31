@@ -449,7 +449,7 @@ Prepare Astro site for production preview
 
 ### Phase 6 - Cloudflare Preview Validation
 
-Status: next phase.
+Status: complete.
 
 Scope:
 
@@ -462,6 +462,13 @@ Scope:
 - Decide whether terms/privacy pages are needed for first launch.
 - Decide whether `astro-poc/`, generated `site/`, and other migration scratch files should be removed in a separate cleanup step.
 
+Completed:
+
+- Branch `astro-migration-poc` was pushed.
+- Cloudflare Pages preview deployed successfully.
+- Preview uses `astro-site` as the Pages root, with build command `npm run build`, output directory `dist`, and Node.js 20+.
+- Home, blog index, post pages, RSS, sitemap, 404, favicon, avatar, and legacy redirects were manually validated in the Cloudflare preview.
+
 Suggested commit:
 
 ```text
@@ -470,7 +477,9 @@ Validate Astro Cloudflare preview
 
 ### Phase 7 - Cutover Or Archive Hugo
 
-Requires explicit approval.
+Status: in progress.
+
+Requires explicit approval before any production cutover or Hugo/Wowchemy removal.
 
 Scope:
 
@@ -478,6 +487,30 @@ Scope:
 - Archive or remove Hugo files only after production parity is approved.
 - Update README and deployment documentation.
 - Remove or archive `astro-poc/` only after it is confirmed no longer needed.
+
+Current cutover strategy:
+
+- Keep `astro-site/` as the Cloudflare Pages root for production unless Cloudflare exposes a concrete deployment constraint.
+- Do not move Astro files to the repository root for cutover.
+- Do not delete Hugo/Wowchemy source files in this phase.
+- Treat any Hugo archival or deletion as a separate, explicitly approved cleanup step.
+
+Phase 7 site polish completed:
+
+- Added explicit blog post navigation back to `/blog/` at the top and bottom of article pages.
+- Made blog post tags clickable instead of decorative text.
+- Added static tag index and tag detail pages under `/tags/`.
+- Added `Tags` to the primary navigation.
+- Added compact clickable tags to the blog index cards.
+- Included tag pages in the sitemap.
+- Normalized tag pill spacing so wrapped tags have consistent height.
+
+Scratch/reference cleanup proposal:
+
+- `astro-poc/`: old untracked Astro proof of concept, including `node_modules/` and `dist/`. Remove after confirming no reference material is still needed.
+- `site/`: generated Hugo output. Remove after confirming production no longer depends on generated Hugo artifacts.
+- `.cache/`: local cache directory. Remove when doing workspace cleanup.
+- `ASTRO_MIGRATION_NOTES.md`: stale note that points at `astro-poc/`; either delete it after this plan supersedes it or rewrite it to point at `astro-site/`.
 
 Suggested commit:
 
@@ -494,7 +527,7 @@ Switch production site to Astro
 - Draft legal pages may accidentally become public if content migration ignores `draft: true`.
 - Prior untracked Astro files could confuse the migration boundary if they are adopted without review.
 - Emoji and punctuation in titles are fine for display, but slugs should stay normalized and stable.
-- Cloudflare Pages dashboard settings are not visible in the repository, so deployment assumptions need confirmation.
+- Cloudflare Pages dashboard settings are not committed in the repository; the manually validated preview currently confirms the expected `astro-site` root, `npm run build` command, `dist` output directory, and Node.js 20+ settings.
 
 ## 5. URL/SEO Plan
 
@@ -509,13 +542,14 @@ Switch production site to Astro
 - Add canonical URL tags.
 - Add Open Graph and Twitter metadata in `BaseLayout.astro`.
 - Add sitemap and RSS routes.
+- Include tag index and tag detail routes in the sitemap.
 - Validate that internal links to old `/post/.../` paths are updated or intentionally redirected.
 
 ## 6. Deployment Plan
 
 Current deployment documentation points to Cloudflare Pages, but no committed Cloudflare config exists.
 
-Astro preview deployment should use this Cloudflare Pages configuration:
+Astro preview deployment has been validated with this Cloudflare Pages configuration:
 
 - Branch: `astro-migration-poc`
 - Root directory: `astro-site`
@@ -538,6 +572,8 @@ Do not change production deployment until:
 - Cloudflare preview build passes,
 - route inventory is reviewed.
 
+For production cutover, keep the same Pages configuration and point the production branch/domain at the validated Astro deployment. Keep Hugo/Wowchemy files in the repository unless a separate cleanup step is explicitly approved.
+
 ## 7. Validation Checklist
 
 Completed locally:
@@ -553,19 +589,22 @@ Completed locally:
 - [x] Canonical post URLs use `/blog/:slug/`.
 - [x] Legacy URL redirect file exists at `astro-site/public/_redirects`.
 - [x] Sitemap route exists.
+- [x] Tag index and tag detail routes exist.
+- [x] Blog post tags link to tag pages.
+- [x] Blog posts include explicit back navigation to the blog index.
 - [x] RSS route exists.
 - [x] Placeholder resume PDF is excluded from `astro-site`.
 - [x] No Hugo files are deleted or modified for cutover.
 
-Next phase validation:
+Cloudflare preview validation:
 
-- [ ] Confirm Cloudflare Pages preview settings use `astro-site`.
-- [ ] Cloudflare preview build passes.
-- [ ] Home page is manually reviewed in Cloudflare preview.
-- [ ] Blog index and all four posts are manually reviewed in Cloudflare preview.
-- [ ] `_redirects` works for all four legacy `/post/.../` URLs in Cloudflare preview.
-- [ ] `/rss.xml` and `/sitemap.xml` return valid XML in Cloudflare preview.
-- [ ] Avatar and favicon load in Cloudflare preview.
+- [x] Confirm Cloudflare Pages preview settings use `astro-site`.
+- [x] Cloudflare preview build passes.
+- [x] Home page is manually reviewed in Cloudflare preview.
+- [x] Blog index and all four posts are manually reviewed in Cloudflare preview.
+- [x] `_redirects` works for all four legacy `/post/.../` URLs in Cloudflare preview.
+- [x] `/rss.xml` and `/sitemap.xml` return valid XML in Cloudflare preview.
+- [x] Avatar and favicon load in Cloudflare preview.
 - [ ] Decide whether search remains deferred.
 - [ ] Decide whether contact form remains deferred.
 - [ ] Decide whether terms/privacy pages remain unpublished.
@@ -579,7 +618,7 @@ Before production cutover:
 - [x] Sitemap generated.
 - [x] RSS generated.
 - [x] Metadata implemented.
-- [ ] Cloudflare preview reviewed.
+- [x] Cloudflare preview reviewed.
 - [ ] Hugo removal or archival explicitly approved.
 
 ## 8. Recommendation On Whether Astro Is Worth Continuing
