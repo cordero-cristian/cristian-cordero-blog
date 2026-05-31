@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "astro:dev": "npm --prefix astro-site run dev",
+    "astro:build": "npm --prefix astro-site run build",
+    "astro:preview": "npm --prefix astro-site run preview"
+  }
+}

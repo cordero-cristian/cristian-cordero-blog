@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found" description="The requested page could not be found." canonicalPath="/404/">
+  <section class="not-found">
+    <p class="eyebrow">404</p>
+    <h1>Page not found</h1>
+    <p class="lede">That page is not available. The blog index is the best place to keep browsing.</p>
+    <div class="actions">
+      <a class="button" href="/blog/">Go to blog</a>
+      <a class="button secondary" href="/">Go home</a>
+    </div>
+  </section>
+</BaseLayout>

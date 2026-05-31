@@ -1,70 +1,61 @@
-# 📝 Cristian Cordero's Blog
+# Cristian Cordero's Blog
 
-Welcome to the source code repository for [cristian-cordero.dev](https://cristian-cordero.dev) — a personal blog where I share insights on network automation, Kubernetes, and cloud-native infrastructure.
+Source for [cristian-cordero.dev](https://cristian-cordero.dev), a personal site and blog focused on network automation, Kubernetes, telemetry, Python, and cloud-native infrastructure.
 
-## 📚 About the Blog
+## Astro Site
 
-This blog serves as a platform to document my journey and experiments in the tech world. Topics include:
+The production Astro migration lives in `astro-site/`. The legacy Hugo/Wowchemy source remains in the repository until cutover is approved.
 
-- **Network Automation**: Exploring tools and techniques to automate network tasks.
-- **Kubernetes**: Deploying and managing containerized applications.
-- **Cloud-Native Infrastructure**: Building scalable and resilient systems.
-
-Each post is crafted to provide practical knowledge, code snippets, and real-world applications.
-
-## 🚀 Getting Started
-
-To view the blog locally:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/cordero-cristian/cristian-cordero-blog.git
-   ```
-   ```
-   cd cristian-cordero-blog
-
-Install dependencies (if applicable):
+Install dependencies:
 
 ```bash
-# Example using Hugo
-brew install hugo
+npm install --prefix astro-site
 ```
-Run the development server:
+
+Run the local development server:
+
 ```bash
-hugo server -D
+npm --prefix astro-site run dev
 ```
-Visit http://localhost:1313 in your browser.
 
-Note: Ensure you have the necessary tools installed, such as Hugo for static site generation.
+Build the static site:
 
-## 🧾 Blog Structure
-content/: Contains all the markdown files for blog posts.
+```bash
+npm --prefix astro-site run build
+```
 
-layouts/: Custom layouts for the blog.
+Preview a production build:
 
-static/: Static assets like images and CSS.
+```bash
+npm --prefix astro-site run preview
+```
 
-config.toml: Configuration file for the site.
+Root convenience scripts are also available:
 
-## 🛠️ Technologies Used
-Hugo: Fast and flexible static site generator.
+```bash
+npm run astro:dev
+npm run astro:build
+npm run astro:preview
+```
 
-Markdown: Writing blog posts.
+## Cloudflare Pages
 
-CloudFlare Pages: Hosting the blog.
+Use these settings for the Astro deployment:
 
-## 📬 Contact
-Feel free to reach out or connect with me:
+- Root directory: `astro-site`
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node.js: 20+
 
-Website: cristian-cordero.dev
+The Astro build includes `/`, `/blog/`, canonical `/blog/:slug/` post URLs, `/rss.xml`, `/sitemap.xml`, `/404.html`, and Cloudflare `_redirects` for the legacy Hugo post URLs.
 
-GitHub: @cordero-cristian
+## Legacy Hugo
 
-LinkedIn: Cristian Cordero
+The existing Hugo source is retained for reference during migration:
 
-Email: cristian@cristian-cordero.dev
+- `content/`: legacy Markdown content
+- `layouts/`: custom Hugo shortcodes/layouts
+- `config/`: Wowchemy/Hugo configuration
+- `static/` and `assets/`: legacy static assets
 
-## 📄 License
-This project is licensed under the MIT License.
-
-Thank you for visiting! If you find the content helpful, consider starring the repository or sharing it with others.
+Do not remove or archive the Hugo files until the Astro preview has been validated and a separate cleanup step is approved.

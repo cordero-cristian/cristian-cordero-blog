@@ -3,8 +3,11 @@
 
 # Hugo
 resources/
-public/
+/public/
 jsconfig.json
 node_modules/
+astro-site/.astro/
+astro-site/node_modules/
+astro-site/dist/
 go.sum
 .hugo_build.lock

@@ -1,0 +1,42 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const { entry } = Astro.props;
+const { title, description, pubDate, updatedDate, tags } = entry.data;
+const formattedDate = new Intl.DateTimeFormat('en', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+}).format(pubDate);
+const formattedUpdatedDate = updatedDate
+  ? new Intl.DateTimeFormat('en', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(updatedDate)
+  : undefined;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={`/blog/${entry.slug}/`} type="article">
+  <article class="post">
+    <header class="post-header">
+      <p class="eyebrow">Blog</p>
+      <h1>{title}</h1>
+      <p class="post-meta">
+        Published {formattedDate}
+        {formattedUpdatedDate && <span> · Updated {formattedUpdatedDate}</span>}
+      </p>
+      {description && <p class="lede">{description}</p>}
+      {tags.length > 0 && (
+        <ul class="tag-list" aria-label="Tags">
+          {tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      )}
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
