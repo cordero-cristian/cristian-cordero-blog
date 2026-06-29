@@ -2,7 +2,7 @@
 
 title: "Spec-Driven Network Automation, Part 2: Mock First, Lab Second"
 description: "Feature 001 of the SR Linux lab project: building the first CLI lifecycle with mock data before relying on a live network lab."
-pubDate: 2026-06-15
+pubDate: 2026-06-28
 draft: false
 tags:
   - Network Automation
